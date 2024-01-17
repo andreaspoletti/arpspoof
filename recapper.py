@@ -1,12 +1,11 @@
-import re
-import os
-import zlib
-from typing import Tuple, Any
-
-from scapy.all import rdpcap, TCP
 import collections
+import os
+import re
+import zlib
 
+from scapy.all import rdpcap
 from scapy.layers.http import HTTPRequest
+from scapy.layers.inet import TCP
 
 OUTDIR = './recapper'
 PCAPS = './'

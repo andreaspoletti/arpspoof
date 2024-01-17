@@ -1,8 +1,8 @@
-from multiprocessing import Process
-from scapy.all import send, sniff, srp
 import sys
 import time
+from multiprocessing import Process
 
+from scapy.all import send, sniff, srp
 from scapy.layers.l2 import Ether, ARP
 from scapy.utils import wrpcap
 
@@ -28,7 +28,7 @@ def poison(victim, victimmac, gateway, gatewaymac):
             break
 
 
-def sniff_packets(victim, interface, gateway, count=50):
+def sniff_packets(victim, interface, gateway, count=300):
     time.sleep(5)
     bpf_filter = f"ip host {victim}"
     packets = sniff(count=count, filter=bpf_filter, iface=interface)
